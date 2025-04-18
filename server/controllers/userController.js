@@ -24,8 +24,8 @@ const registerUser = async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true, // prevent js to access cookie
-            secure: false,
-            sameSite: 'strict', //CSRF protection
+            secure: true,
+            sameSite: 'none', //CSRF protection
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         
@@ -63,8 +63,8 @@ const loginUser = async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true, // prevent js to access cookie
-            secure: false,
-            sameSite: 'strict', //CSRF protection
+            secure: true,
+            sameSite: 'none', //CSRF protection
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         
@@ -94,8 +94,8 @@ const logoutUser = async (req, res) => {
     try {
         res.clearCookie('token', {
             httpOnly: true,
-            secure: false,
-            sameSite: 'strict'
+            secure: true,
+            sameSite: 'none'
         })
 
         return res.json({success: true, message: "Logged Out Succesfully"})

@@ -12,8 +12,8 @@ const sellerLogin = async (req, res) => {
 
             res.cookie('sellerToken', sellerToken, {
                 httpOnly: true, // prevent js to access cookie
-                secure: false,
-                sameSite: 'strict', //CSRF protection
+                secure: true,
+                sameSite: 'none', //CSRF protection
                 maxAge: 7 * 24 * 60 * 60 * 1000
             })
 
@@ -41,8 +41,8 @@ const sellerLogout = async (req, res) => {
     try {
         res.clearCookie('sellerToken', {
             httpOnly: true,
-            secure: false,
-            sameSite: 'strict'
+            secure: true,
+            sameSite: 'none'
         })
 
         return res.json({success: true, message: "Logged Out Succesfully"})
