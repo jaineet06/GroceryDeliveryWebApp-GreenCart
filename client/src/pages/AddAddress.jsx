@@ -19,7 +19,7 @@ const InputField = ({ type, placeholder, name, handleChange, address }) => (
 
 const AddAddress = () => {
 
-  const { axios, user, navigate } = useAppContext()
+  const { axios, user, navigate, setShowUserLogin } = useAppContext()
 
     const [address, setAddress] = useState({
         firstName: '',
@@ -57,6 +57,8 @@ const AddAddress = () => {
 
   useEffect(() => {
     if(!user){
+      toast.error("Login First")
+      setShowUserLogin(true)
       navigate('/cart')
     }
   }, [])
