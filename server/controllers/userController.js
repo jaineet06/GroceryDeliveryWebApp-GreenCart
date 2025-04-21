@@ -26,7 +26,9 @@ const registerUser = async (req, res) => {
             httpOnly: true, // prevent js to access cookie
             secure: true,
             sameSite: 'None', //CSRF protection
-            maxAge: 7 * 24 * 60 * 60 * 1000
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            path: '/',
+            partitioned: true
         })
         
         return res.json({success: true, message: "Account Created", user: {email: user.email, name: user.name}})
@@ -65,7 +67,9 @@ const loginUser = async (req, res) => {
             httpOnly: true, // prevent js to access cookie
             secure: true,
             sameSite: 'None', //CSRF protection
-            maxAge: 7 * 24 * 60 * 60 * 1000
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            path: '/',
+            partitioned: true
         })
         
         return res.json({success: true, message: "Logged in succesfully!", user: {email: isExist.email, name: isExist.name}})
@@ -95,7 +99,9 @@ const logoutUser = async (req, res) => {
         res.clearCookie('token', {
             httpOnly: true,
             secure: true,
-            sameSite: 'None'
+            sameSite: 'None',
+            path: '/',
+            partitioned: true
         })
 
         return res.json({success: true, message: "Logged Out Succesfully"})
