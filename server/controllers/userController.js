@@ -28,7 +28,7 @@ const registerUser = async (req, res) => {
             sameSite: 'None', //CSRF protection
             maxAge: 7 * 24 * 60 * 60 * 1000,
             path: '/',
-            partitioned: true
+            domain: 'grocery-app-alpha.vercel.app'
         })
         
         return res.json({success: true, message: "Account Created", user: {email: user.email, name: user.name}})
@@ -69,7 +69,7 @@ const loginUser = async (req, res) => {
             sameSite: 'None', //CSRF protection
             maxAge: 7 * 24 * 60 * 60 * 1000,
             path: '/',
-            partitioned: true
+            domain: 'grocery-app-alpha.vercel.app'
         })
         
         return res.json({success: true, message: "Logged in succesfully!", user: {email: isExist.email, name: isExist.name}})
@@ -101,7 +101,7 @@ const logoutUser = async (req, res) => {
             secure: true,
             sameSite: 'None',
             path: '/',
-            partitioned: true
+            domain: 'grocery-app-alpha.vercel.app'
         })
 
         return res.json({success: true, message: "Logged Out Succesfully"})
