@@ -10,7 +10,7 @@ axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const mode = import.meta.env.VITE_DEMO_MODE
 
   const [user, setUser] = useState(false);
